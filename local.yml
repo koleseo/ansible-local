@@ -1,0 +1,41 @@
+#setup fresh ubuntu 18
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Install cli basic packages
+    apt: name={{item}}
+    with_items:
+      - mc
+      - tmux
+  - name: Install cli performance packages
+    apt: name={{item}}
+    with_items:
+      - htop
+  - name: Install cli networking packages - ifconfig
+    apt: name={{item}}
+    with_items:
+      - net-tools      
+  - name: Install version control packages
+    apt: name={{item}}
+    with_items:
+      - git
+      - mercurial
+      - subversion
+  - name: Install pip for both 2 and 3
+    apt: name={{item}}
+    with_items:
+      - python-pip
+      - python3-pip     
+  - name: Install arduino
+    apt: name={{item}}
+    with_items:
+      - arduino
+  - name: Install golang
+    apt: name={{item}}
+    with_items:
+      - golang
+  - name: Install virtualization
+    apt: name={{item}}
+    with_items:
+      - vagrant 
+      - virtualbox
